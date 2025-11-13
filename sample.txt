@@ -1,0 +1,3 @@
+Python is fun to learn.
+It makes coding simple and powerful.
+Python is used for data, AI, and the web!
