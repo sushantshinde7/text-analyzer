@@ -16,10 +16,11 @@ This project is beginner-friendly and demonstrates Python string handling, text 
 
 ## ⚙️ Features
 
-- Analyze text typed or pasted directly
+- Analyze text typed or pasted directly (multi-line supported)
 - Analyze text from `.txt` files
 - Shows neat terminal output
 - Easy to understand and extend
+- Works on Windows, Mac, and Linux terminals
 
 ---
 
@@ -39,8 +40,25 @@ python analyzer.py
 ```
 
 3. **Provide input**  
-- Paste/type your text **OR**  
-- Enter a `.txt` file path (e.g., `sample.txt`)  
+Option 1: 
+- Paste/type text directly
+- Leave the file path blank → press Enter
+- Paste/type multiple lines
+- Type END on a new line to finish input
+
+Example:
+```bash
+Python is fun.
+It makes coding easy.
+Python is used for AI and web.
+END
+```
+
+
+Option 2: 
+- Use a .txt file
+- Type the file path (e.g., sample.txt) → press Enter
+- The script reads the file and analyzes automatically
 
 ---
 
@@ -86,8 +104,9 @@ No external packages required
 
 ## 💡 Tips
 
-- You can create multiple `.txt` files for testing different texts  
-- Works on Windows, Mac, and Linux with Python installed  
+- You can create multiple .txt files for testing different texts
+- Multi-line input works by typing/pasting text and ending with END
+- Works on any terminal: VS Code, PowerShell, CMD, Linux, Mac 
 ---
 
 ## 📂 Project Structure
