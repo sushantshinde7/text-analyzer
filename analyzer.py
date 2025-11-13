@@ -3,21 +3,17 @@ import re
 from collections import Counter
 
 def analyze_text(text):
-    # Clean up and normalize text
     text = text.strip()
-    words = re.findall(r'\b\w+\b', text.lower())  # all words
+    words = re.findall(r'\b\w+\b', text.lower())
     sentences = re.split(r'[.!?]+', text)
-    sentences = [s for s in sentences if s.strip()]  # remove empty
+    sentences = [s for s in sentences if s.strip()]
 
     word_count = len(words)
     unique_words = len(set(words))
     char_count = len(text.replace(" ", ""))
     sentence_count = len(sentences)
-
-    # Top 5 words
     top_words = Counter(words).most_common(5)
 
-    # Print neatly
     print("\n🔍 TEXT ANALYSIS RESULT")
     print("-" * 40)
     print(f"Total characters (no spaces): {char_count}")
@@ -28,22 +24,42 @@ def analyze_text(text):
     for word, count in top_words:
         print(f"  {word}: {count}")
 
+def get_multiline_input(first_line=""):
+    """
+    Accepts multi-line text input until user enters 'END' on a new line.
+    Includes the first line if provided.
+    """
+    lines = []
+    if first_line:
+        lines.append(first_line)
+    print("Paste/type your text. Type 'END' on a new line to finish:")
+    while True:
+        try:
+            line = input()
+        except EOFError:
+            # Handles Ctrl+D (Linux/Mac) or Ctrl+Z (Windows) as end-of-input
+            break
+        if line.strip().upper() == "END":
+            break
+        lines.append(line)
+    return "\n".join(lines)
 
 def main():
     print("🧠 TEXT ANALYZER")
     print("-" * 30)
-    choice = input("Enter text directly or type a file path (.txt):\n> ").strip()
+    choice = input("Enter a file path (.txt) or leave empty to type/paste text:\n> ").strip()
 
-    if os.path.isfile(choice):
-        try:
-            with open(choice, "r", encoding="utf-8") as f:
-                text = f.read()
-            analyze_text(text)
-        except Exception as e:
-            print(f"⚠️ Error reading file: {e}")
+    text = ""
+    if choice and os.path.isfile(choice):
+        # read file
+        with open(choice, "r", encoding="utf-8") as f:
+            text = f.read()
     else:
-        analyze_text(choice)
+        # accept multi-line text directly
+        text = get_multiline_input(first_line=choice)
 
+    analyze_text(text)
 
 if __name__ == "__main__":
     main()
+
