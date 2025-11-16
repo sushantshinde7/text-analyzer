@@ -23,6 +23,10 @@ This project is beginner-friendly and demonstrates Python string handling, text 
 - Works on Windows, Mac, and Linux terminals
 
 ---
+**Upcoming Features:** 
+- Longest & shortest words 
+- Average sentence length 
+- ASCII word-frequency bar graph
 
 ## 🚀 How to Run
 
