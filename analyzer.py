@@ -8,19 +8,16 @@ from collections import Counter
 # -----------------------------
 def analyze_text(text):
     text = text.strip()
-
-    # Extract words & sentences
     words = re.findall(r'\b\w+\b', text.lower())
-    sentences = [s.strip() for s in re.split(r'[.!?]+', text) if s.strip()]
+    sentences = re.split(r'[.!?]+', text)
+    sentences = [s for s in sentences if s.strip()]
 
-    # Basic metrics
     word_count = len(words)
     unique_words = len(set(words))
     char_count = len(text.replace(" ", ""))
     sentence_count = len(sentences)
     top_words = Counter(words).most_common(5)
 
-    # Output
     print("\n🔍 TEXT ANALYSIS RESULT")
     print("-" * 40)
     print(f"Total characters (no spaces): {char_count}")
@@ -28,41 +25,52 @@ def analyze_text(text):
     print(f"Unique words: {unique_words}")
     print(f"Total sentences: {sentence_count}")
 
+    # --- NEW FEATURES BELOW ---
+    longest_word = max(words, key=len) if words else ""
+    shortest_word = min(words, key=len) if words else ""
+    avg_sentence_length = word_count / sentence_count if sentence_count else 0
+
+    print(f"Longest word: {longest_word}")
+    print(f"Shortest word: {shortest_word}")
+    print(f"Average sentence length: {avg_sentence_length:.2f} words")
     print("\nTop 5 most common words:")
     for word, count in top_words:
         print(f"  {word}: {count}")
+
+    print("\nWord Frequency Bar Graph:")
+    print("-" * 40)
+    for word, count in top_words:
+        print(f"{word:10} | {'#' * count}")
+
 
 
 # -----------------------------
 # MULTILINE INPUT HANDLING
 # -----------------------------
 def get_multiline_input(first_line=""):
-    """
-    Accepts multi-line input until the user presses Enter twice.
-    Works naturally for typing and pasting text.
-    """
-    print("Type or paste your text (press Enter twice to finish):\n")
+    print("Add more lines if needed. Press Enter once for a new line, or press Enter twice to finish:\n")
 
     lines = []
+    empty_count = 0
+
+    # Only add first_line if it contains text
     if first_line.strip():
         lines.append(first_line)
-
-    empty_lines = 0
 
     while True:
         line = input()
 
         # Two empty lines = finish input
         if line.strip() == "":
-            empty_lines += 1
-            if empty_lines == 2:
+            empty_count += 1
+            if empty_count == 2:
                 break
         else:
-            empty_lines = 0
-
-        lines.append(line)
+            empty_count = 0
+            lines.append(line)
 
     return "\n".join(lines)
+
 
 
 # -----------------------------
