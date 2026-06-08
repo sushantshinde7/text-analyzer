@@ -1,5 +1,5 @@
 
-# 🧠 Text Analyzer (Python - terminal)
+# 🧠 Text Analyzer (Python - terminal project)
 
 A terminal-based Python tool that analyzes any text or `.txt` file.
 
