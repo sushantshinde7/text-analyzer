@@ -1,94 +1,91 @@
+# 🧠 Text Analyzer (Python — Terminal)
 
-# 🧠 Text Analyzer (Python - terminal)
-
-A terminal-based Python tool that analyzes any text or `.txt` file.
-
-It calculates:
-- Total characters (excluding spaces)
-- Total words
-- Unique words
-- Number of sentences
-- Top 5 most common words
-
-This project is beginner-friendly and demonstrates Python string handling, text analysis, and working with files.
+A lightweight, terminal-based Python tool that analyzes any text — either typed/pasted directly or loaded from a `.txt` file.
 
 ---
 
-## ⚙️ Features
+## ⚙️ What It Analyzes
 
-- Analyze text typed or pasted directly (multi-line supported)
-- Analyze text from `.txt` files
-- Shows neat terminal output
-- Easy to understand and extend
-- Works on Windows, Mac, and Linux terminals
+| Metric | Description |
+|---|---|
+| 🔤 Characters | Total characters, excluding spaces |
+| 📝 Words | Total word count |
+| 🔁 Unique Words | Distinct words (case-insensitive) |
+| 🔢 Sentences | Sentence count based on punctuation |
+| 🏆 Top 5 Words | Most frequently used words |
 
 ---
-**Upcoming Features:** 
-- Longest & shortest words 
-- Average sentence length 
-- ASCII word-frequency bar graph
+
+## ✨ Features
+
+- **Direct input** — paste or type text in the terminal (multi-line supported)
+- **File input** — point to any `.txt` file for instant analysis
+- **Clean output** — formatted, readable results in any terminal
+- **Zero dependencies** — uses only Python built-in libraries
+- **Cross-platform** — works on Windows, macOS, and Linux
+
+---
 
 ## 🚀 How to Run
 
-1. **Clone the repository**
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/yourusername/text-analyzer.git
 cd text-analyzer
 ```
 
-2. **Run the script**
+### 2. Run the script
 
 ```bash
 python analyzer.py
 ```
 
-3. **Provide input**  
-Option 1: 
-- Paste/type text directly
-- Leave the file path blank → press Enter
-- Paste/type multiple lines
-- Type END on a new line to finish input
+### 3. Choose your input method
 
-Example:
-```bash
+**Option A — Type or paste text directly:**
+
+- Leave the file path blank → press **Enter**
+- Type or paste your text (multi-line supported)
+- Type `END` on a new line to finish
+
+```
 Python is fun.
 It makes coding easy.
 Python is used for AI and web.
 END
 ```
 
+**Option B — Use a `.txt` file:**
 
-Option 2: 
-- Use a .txt file
-- Type the file path (e.g., sample.txt) → press Enter
-- The script reads the file and analyzes automatically
+- Enter the file path (e.g., `sample.txt`) → press **Enter**
+- The script reads and analyzes the file automatically
 
 ---
 
 ## 📊 Example Output
 
-```text
+```
 🔍 TEXT ANALYSIS RESULT
 ----------------------------------------
 Total characters (no spaces): 96
-Total words: 20
-Unique words: 15
-Total sentences: 3
+Total words:                   20
+Unique words:                  15
+Total sentences:               3
 
 Top 5 most common words:
-  python: 2
-  is: 2
-  coding: 1
-  fun: 1
-  learn: 1
+  python  ██████  2
+  is      ██████  2
+  coding  ███     1
+  fun     ███     1
+  learn   ███     1
 ```
 
 ---
 
-## 📄 Sample Input File (`sample.txt`)
+## 📄 Sample Input (`sample.txt`)
 
-```text
+```
 Python is fun to learn.
 It makes coding simple and powerful.
 Python is used for data, AI, and the web!
@@ -96,9 +93,33 @@ Python is used for data, AI, and the web!
 
 ---
 
+## 🗺️ Roadmap
+
+- [x] Character, word, unique word, sentence count
+- [x] Top 5 most common words
+- [ ] Longest & shortest words
+- [ ] Average sentence length
+- [ ] ASCII word-frequency bar chart
+- [ ] Reading time estimate
+
+---
+
+## 📂 Project Structure
+
+```
+text-analyzer/
+│
+├── analyzer.py        # Main Python script
+├── sample.txt         # Sample input file for testing
+├── requirements.txt   # Empty — no external packages needed
+└── README.md          # This file
+```
+
+---
+
 ## 🧩 Requirements
 
-```text
+```
 Python 3.x
 Built-in libraries only: os, re, collections
 No external packages required
@@ -108,28 +129,12 @@ No external packages required
 
 ## 💡 Tips
 
-- You can create multiple .txt files for testing different texts
-- Multi-line input works by typing/pasting text and ending with END
-- Works on any terminal: VS Code, PowerShell, CMD, Linux, Mac 
----
-
-## 📂 Project Structure
-
-```text
-text-analyzer/
-│
-├─ analyzer.py        # main Python script
-├─ sample.txt         # sample input file
-├─ requirements.txt   # optional, empty
-└─ README.md          # this file
-```
+- Create multiple `.txt` files to batch-test different types of text
+- Works in VS Code terminal, PowerShell, CMD, and any Unix shell
+- Great starting point for extending with NLP features
 
 ---
 
 ## 📜 License
 
-```text
-MIT License
-```
-
-
+MIT License — free to use, modify, and distribute.
